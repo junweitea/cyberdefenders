@@ -22,6 +22,9 @@ We identified a shortcut file **templet.lnk** which we used **LECmd** by EricZim
 > LECmd.exe -f "C:\Users\Junweitea\Desktop\119-KrakenKeyLogger\challenge\Users\OMEN\Downloads\project templet test\templet.lnk"
 ```
 After parsing the data, we saw a powershell function:
-<img width="606" alt="q3a" src="https://github.com/user-attachments/assets/f17dc603-27ec-48f9-80fb-4961afdc5540">
+<img width="808" alt="q3a" src="https://github.com/user-attachments/assets/f17dc603-27ec-48f9-80fb-4961afdc5540">
+
+From this screenshot, we able to identify that the shortcut is using powershell to **wget a file from an encoded address** therefore we just have to put in PowerShell ISE and Write-Output of the encoded address
+<img width="724" alt="question 3" src="https://github.com/user-attachments/assets/773a2156-1201-4b36-8288-3bb5d7ef8a13">
 
 
