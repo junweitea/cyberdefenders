@@ -17,6 +17,11 @@ We proceed to look for the protected ZIP file sent by the attacker which can be 
 Postulating that the ZIP file sent by the attacker is malicious, we proceed to look what is inside the zip file
 ![image](https://github.com/user-attachments/assets/a472f2ef-a373-483a-949f-cdc75ca2fccd)
 
-
+We identified a shortcut file **templet.lnk** which we used **LECmd** by EricZimmerman to decode and parse all available information in **templet.lnk**
+```bash
+> LECmd.exe -f "C:\Users\Junweitea\Desktop\119-KrakenKeyLogger\challenge\Users\OMEN\Downloads\project templet test\templet.lnk"
+```
+After parsing the data, we saw a powershell function:
+<img width="606" alt="q3a" src="https://github.com/user-attachments/assets/f17dc603-27ec-48f9-80fb-4961afdc5540">
 
 
