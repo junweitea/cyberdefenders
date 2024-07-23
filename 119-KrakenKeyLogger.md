@@ -1,5 +1,6 @@
 Hello all! Today i would be doing a walkthru of my solution for 119-KrakenKeyLogger! This challenge is about a digital forensics team was called in to investigate a data breach for a company which seems interesting =)
 
+<img width="418" alt="description" src="https://github.com/user-attachments/assets/d7742022-9905-443f-b704-78a5cada777f">
 
 
 ### Question 1: What is the web messaging app the employee used to talk to the attacker?
