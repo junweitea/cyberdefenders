@@ -34,6 +34,7 @@ First we have to understand what is LOLAPPS which is **Living Off The Land Appli
 ![image](https://github.com/user-attachments/assets/8c39a4eb-8978-4c12-86ac-090ffde83636)
 
 We then proceed to look for the LOLAPPS in the victim's machine and we found out that the victim used "Greenshot" which we found **Greenshot.ini** in **AppData/Roaming/Greenshot** and ctrl+f **Command** ANDDDD we found the answer!
+
 ![image](https://github.com/user-attachments/assets/5b00ccab-2c90-41d0-be58-fe55516b8db9)
 
 
