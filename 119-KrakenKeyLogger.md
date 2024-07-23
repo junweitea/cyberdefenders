@@ -1,4 +1,4 @@
-Hello all! Today i would be doing a walkthru of my solution for 119-KrakenKeyLogger! This challenge is about a digital forensics team was called in to investigate a data breach for a company which seems interesting =)
+Hello all! Today i would be doing a walkthru the cyberdefenders.org blue team CTF challenge for [119-KrakenKeyLogger](https://cyberdefenders.org/blueteam-ctf-challenges/krakenkeylogger/)! This challenge is about a digital forensics team was activated to investigate a data breach for a company which seems interesting =)
 
 <img width="627" alt="description" src="https://github.com/user-attachments/assets/d7742022-9905-443f-b704-78a5cada777f">
 
@@ -24,7 +24,7 @@ We identified a shortcut file **templet.lnk** which we used **LECmd** by EricZim
 After parsing the data, we saw a powershell function:
 <img width="808" alt="q3a" src="https://github.com/user-attachments/assets/f17dc603-27ec-48f9-80fb-4961afdc5540">
 
-From this screenshot, we able to identify that the shortcut is using powershell to **wget a file from an encoded address** therefore we just have to put in PowerShell ISE and Write-Output of the encoded address ANDDD you will get the answer!
+From this screenshot, we able to identify that the shortcut is using powershell to **wget a file from an encoded address** therefore we just have to put in PowerShell ISE and Write-Output of the encoded address ANDDD we found the answer!
 
 <img width="724" alt="question 3" src="https://github.com/user-attachments/assets/773a2156-1201-4b36-8288-3bb5d7ef8a13">
 
@@ -33,10 +33,24 @@ From this screenshot, we able to identify that the shortcut is using powershell 
 First we have to understand what is LOLAPPS which is **Living Off The Land Applications** which i googled and basically is referring to a combination of applications that can be used to carry out day-to-day exploitation. And as you can see below is the applications used by Attacker/Hacker to exploit for either persistence, lateral movement or data exfiltration
 ![image](https://github.com/user-attachments/assets/8c39a4eb-8978-4c12-86ac-090ffde83636)
 
-We then proceed to look for the LOLAPPS in the victim's machine and we found out that the victim used "Greenshot" which we found **Greenshot.ini** in **AppData/Roaming/Greenshot** and ctrl+f **Command** ANDDDD we found the answer!
+We then proceed to look for the LOLAPPS in the victim's machine and we found out that the victim used "Greenshot" which we found **Greenshot.ini** in **AppData/Roaming/Greenshot** and **ctrl+f Command** (Reason why we search command because the question is asking about the name of the command) ANDDDD we found the answer!
 
 ![image](https://github.com/user-attachments/assets/5b00ccab-2c90-41d0-be58-fe55516b8db9)
 
+### Question 5: What is the complete path of the malicious file that the attacker used to achieve persistence?
+The answer is basically in the screenshot above! 
 
+### Question 6: What is the name of the application the attacker utilized for data exfiltration?
+As mentioned above in Question 1, we can proceed to look for programs used in **AppData\Roaming** which we will see the program used for data exfiltration and do some open-research ANDDD we found the answer!
+![image](https://github.com/user-attachments/assets/3c6acb4d-5bae-4391-a396-69c7ef64edce)
 
+### Question 7: What is the IP address of the attacker?
+Since we know the software used for data exfiltration, we can proceed to investigate in that particular folder and we saw **ad.trace** file which we open and **ctrl+f "\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"** as this regex is to look for any IP Address ANDDDDD we found the answer!
+![image](https://github.com/user-attachments/assets/520bd2b0-e7ab-4270-8652-c8483641fd18)
 
+### Conclusion
+I will rate the difficulty of this challenge 8/10, 2hr30mins for me to complete it! The reason is that due to question 1, I am unable to find the answer using the usual methods, such as looking in the AppData folder, Prefetch, or browser artefacts! Only with the hint did I realise that I might be able to find the answer through the notification banner, which makes sense because messaging apps normally have notifications. The rest of the questions are logical and manageable!
+
+### Learning Point
+1) Identify that notification banner might able to give clue on the user's action
+2) The existence of LOLAPPS and their vulnerability that allows attackers/threat actors to leverage and exploit for their next course of action
