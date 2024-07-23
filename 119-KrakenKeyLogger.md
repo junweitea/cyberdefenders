@@ -13,3 +13,10 @@ After browsing all those locations and even deep-diving into browser artefacts, 
 ### Question 2: What is the password for the protected ZIP file sent by the attacker to the employee?
 We proceed to look for the protected ZIP file sent by the attacker which can be found in the Downloads Folder called **our project templet test.zip**, and referencing and correlating from our finding above from the notification screenshot we are able to identify the password.
 
+### Question 3: What domain did the attacker use to download the second stage of the malware?
+Postulating that the ZIP file sent by the attacker is malicious, we proceed to look what is inside the zip file
+![image](https://github.com/user-attachments/assets/a472f2ef-a373-483a-949f-cdc75ca2fccd)
+
+
+
+
