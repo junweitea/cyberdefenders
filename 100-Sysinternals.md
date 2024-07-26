@@ -1,13 +1,14 @@
-Hello all! Today i would be doing a walkthru one of the Blue Team CTF challenge in cyberdefenders.org [100-Sysinternals](https://cyberdefenders.org/blueteam-ctf-challenges/sysinternals/)! This challenge is about analysing a laggy windows system after downloading a possibly malicious Sysinternals suite!
+Hello all! Today i would be doing a walkthru of one of the Blue Team CTF challenge in cyberdefenders.org [100-Sysinternals](https://cyberdefenders.org/blueteam-ctf-challenges/sysinternals/)! This challenge is about analysing a laggy windows system after downloading a possibly malicious Sysinternals suite!
 
 ![main](https://github.com/user-attachments/assets/544da146-0ce2-42f7-9dbb-942c964993c1)
 
 ### Question 1: What was the malicious executable file name that the user downloaded?
 This is pretty straightforward, we can just proceed to navigate to User's Downloads, Desktop or even Documents directory ANDDD we found the answer under **C:\Public\Downloads**!!!
+
 ![qn1](https://github.com/user-attachments/assets/70b164dd-38b4-4e45-a13f-ad82961a8018)
 
 ### Question 2: When was the last time the malicious executable file was modified? 12-hour format?
-This is a giveaway question, since you already found the malicsious executable file! *(Please do take note that the answer format is in (MM-DD-YYYY XX:XX:XX PM)*
+This is a giveaway question, since you already found the malicsious executable file just look at the file properties! *(Please do take note that the answer format is in (MM-DD-YYYY XX:XX:XX PM)*
 
 ### Question 3: What is the SHA1 hash value of the malware?
 We can't just export the malware out and hash it as the malware was modified therefore we should use **AmcacheParser** by our favourite Eric Zimmerman to parse the data from **C:\Windows\appcompat\Prrograms\Amcache.hve**! The reason is because Amcache.hve is an artifact that contains useful metadata such as to program execution and installation, and the most importantly is that..... is **contains SHA1 hash for all program that was executed**!!!
@@ -15,13 +16,15 @@ We can't just export the malware out and hash it as the malware was modified the
 > AmcacheParser.exe -f Amcache.hve -i --csv 101amcache.csv
 ```
 After parsing the amcache.hve, you would have all files below
+
 ![qn3a](https://github.com/user-attachments/assets/e520805d-1fef-4eda-8e85-c0cd66e77e16)
 
 Therefore you just have to view the data in **UnassociatedFileEntries** ANDDDD we found the answer!
 ![qn3](https://github.com/user-attachments/assets/4397c0c0-181f-4927-aba9-0c0daba807db)
 
 ### Question 4: What is the malware's family?
-Since you already have the SHA1 hash of the malware we should just utilise open-source research by inputing the hash into virustotal ANDDD we found the answer! *(Malware family normally is a unique name/title to group malwares based on their common characteristics and tactics, techniques and procedures (TTP))*
+Since you already have the SHA1 hash of the malware we should just utilise open-source research by inputing the hash into virustotal ANDDD we found the answer! *(Malware family normally is a unique name/title to group malwares based on their common characteristics and tactics, techniques and procedures (TTP)) || Some tips is that normally malware family name is very unique and special such as WannaCry, RedLiner or AgentTelsa* 
+
 ![qn4](https://github.com/user-attachments/assets/3222c1d3-0a08-4f8a-bdf5-c56d88efbeca)
 
 *(Just to add on, one of my favourite method to lookup for malware family is using https://bazaar.abuse.ch/browse/ ! This website contains malware database which you can map your malware or submit hash to look for more information about that malware or search for malware family in it!)*
@@ -48,7 +51,20 @@ Just reference from the screenshot above!
 ### Question 9: What is the extension of files deleted by the 2nd stage executable?
 At first, i digged into the **Files Deleted** section in virustotal which i realised most of the extension which the malware deleted are .txt .csv .cookie files. However those are not the answer :(
 
-I then proceed to look for the 2nd stage executable in C:\Windows and perform simple static analysis to see if able to find the answer.
+I then proceed to look for the 2nd stage executable in C:\Windows (Referencing from Qn 7) and input the hash into virustotal which i found out that the 2nd stage executable is deleting files from the Prefetch folder
+![qn9](https://github.com/user-attachments/assets/00215b8a-5b57-46a9-ba99-b1c8f1af84a2)
+
+I proceed to navigate into the Prefetch folder *(C:\Windows\Prefetch)* and noticed that a certain file extension in the Prefetch folder were all deleted! 
+
+![qn9b](https://github.com/user-attachments/assets/0765f714-936f-4b1d-981c-bcaeea9f2637)
+
+### Conclusion
+I will rate the difficulty of this challenge 3/10, 1hr for me to complete it! This is quite a simple challenge, as most of the questions are straightforward, requiring only one or two steps to find the answers. There is minimal correlation needed between the questions. Additionally, the use of online automated malware analysis tools such as virustotal or hybrid-analysis signficantly simplifies the process by performing most of the analysis for us, thus reducing the difficulty of the challenge. While some may debate the use of such technology, but i feel that it is designed to accelerate forensic investigations, which ultimately benefits the forensic team. We should, of course, leverage this technology to our advantage! =)
+
+### Learning Point
+1) Utilising online automated malware analysis
+
+
 
 
 
