@@ -5,13 +5,14 @@ Hello all! Today i would be doing a walkthru the cyberdefenders.org blue team CT
 This is pretty straightforward, we just have to extract the **SYSTEM** hive then load into **RegistryExplorer** and navigate to **HKLM\SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName** ANDDD we found the answer!
 
 *Some of my favourite things about the RegistryExplorer which is the Available Bookmarks, it contains all the useful information you need!*
-<img width="627" alt="qn1" src="https://github.com/user-attachments/assets/57dfb223-5e94-4ce1-ae08-f85625026449">
+
+<img width="900" alt="qn1" src="https://github.com/user-attachments/assets/57dfb223-5e94-4ce1-ae08-f85625026449">
 
 ### Question 2: What is the Timezone of the compromised machine? Format: UTC+0 (no-space)?
 Since we already have SYSTEM Hive loaded in RegistryExplorer, we just have to navigate to **HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation** and you have these timezone data
 <img width="1027" alt="qn2" src="https://github.com/user-attachments/assets/8c2cbbb6-d1c1-42d4-9384-789216ebc594">
 Using the capability of AI, we just have to input **ActiveTimeBias** & **TimeZoneKeyName** into ChatGPT ANDDD we found the answer!
-<img width="570" alt="qn2a" src="https://github.com/user-attachments/assets/87ab6076-c1bf-479b-b7d6-9764090f9cf9">
+<img width="820" alt="qn2a" src="https://github.com/user-attachments/assets/87ab6076-c1bf-479b-b7d6-9764090f9cf9">
 
 ### Question 3: What was the first vulnerability the attacker was able to exploit?
 My first approach was to utilise the memory dump in volatility to see all the existing processes running *<I am using Volatility 3 Framework 2.7.0 in Windows Environment>*
@@ -28,7 +29,7 @@ Unfortunately i am wrong :(
 Then i proceeded to navigate into **C:\inetpub** & **C:\xampp** directory as there two are web-hosting folder to see if there are any useful artefacts or logs. After like 1hr of digging, i managed to find something indicative in **C:\xampp\apache\logs\access.log**
 
 If you do some online research on the most common web-security vulnerabilities, you will see things like SQL Injection, Cross-Site Request Forgery (CSRF), Cross-Site Scripting (XSS) and many more. Digging further on each vulnerability and the method to detect them, i came upon this article [What is XSS](https://portswigger.net/web-security/cross-site-scripting) from PortSwigger (*company that sells BurpSuite, the most widely used web application security testing software*) ANDDD we found the answer! - *<You have to refer the screenshot below to see what type of attack is it!>*
-<img width="905" alt="qn3b" src="https://github.com/user-attachments/assets/aba99c62-7ce1-4d16-9b2a-681947d6a262">
+<img width="1405" alt="qn3b" src="https://github.com/user-attachments/assets/aba99c62-7ce1-4d16-9b2a-681947d6a262">
 
 ### Question 4: What is the OS build number?
 Instead of the usual way which is finding the build number **HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\CurrentBuildNumber** in **SOFTWARE** hive, i looked for the file properties of **ntroskrnl.exe** in **C:\Windows\System32** folder ANDDD we found the answer! *<ntoskrnl.exe is responsible for a large number of Windows system operations. It’s involved in the execution of many system actions as well.>*
@@ -88,6 +89,13 @@ Pretty straightforward, just run "hashdump" in volatility to dump all the lmhash
 
 ### Question 14: What is The MITRE ID corresponding to the technique used to keep persistence?
 Referencing to questions above, we know what is the technique used by the attacker for persistency which is creating account to maintain access to victim's system and referencing for the [MITRE website](https://attack.mitre.org/tactics/TA0003/) ANDDD we found the answer!
+
+### Question 15: The attacker uploaded a simple command shell through file upload vulnerability. Provide the name of the URL parameter used to execute commands?
+Since the question already told us is a command shell thru file upload, i proceed to **ctrl+f shell** in **access.log** and we found a file named **phpshell.php** that located in **"dvwa/hackable/uploads/"** in **C:\XAMPP**.
+<img width="880" alt="qn15" src="https://github.com/user-attachments/assets/dd266497-760a-47c3-bbbe-8382c1a53661">
+
+
+
 
 
 
