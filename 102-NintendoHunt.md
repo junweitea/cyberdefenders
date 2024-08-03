@@ -30,18 +30,31 @@ Giveaway question! Since we already know the malicious process just refer to our
 This question is tricky as the question is looking for MAC address unlike other CTF challenge which usually asks for IP Address which then you can use netscan or netstat plugin. Therefore i utilised the power of AI which i asked ChatGPT and he mentioned about the printkey plugin which we can have value/data from Registry.
 
 Therefore, i proceed to research online on what is the key we should dive into which i saw this online:
-![image](https://github.com/user-attachments/assets/84ca1192-2c16-4bee-a5ef-2847e5f2e504)
+<img width="800" alt="qn4" src="https://github.com/user-attachments/assets/84ca1192-2c16-4bee-a5ef-2847e5f2e504">
+
 ```bash
 > python vol.py -f mem.dump windows.registry.printkey.PrintKey --key "Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged
 ```
-After running this plugin, we identify 1 subkey which we proceed to print all the information of this subkey
-![qn4a](https://github.com/user-attachments/assets/64dfb357-24ad-4bcf-b2ed-b780f7b74331)
+
+After running this plugin, we identify 1 subkey from the plugin
+<img width="1500" alt="qn4" src="https://github.com/user-attachments/assets/64dfb357-24ad-4bcf-b2ed-b780f7b74331">
 
 
-```
-> python vol.py -f mem.dump windows.registry.printkey.PrintKey --key "Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged\010103000F0000F0080000000F0000F0E3E937A4D0CD0A314266D2986CB7DED5D8B43B828FEEDCEFFD6DE7141DC1D15D > 102mac.txt
+We proceed to print all the subkey information ANDDD we found the answer!
+```bash
+> python vol.py -f mem.dump windows.registry.printkey.PrintKey --key "Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged\010103000F0000F0080000000F0000F0E3E937A4D0CD0A314266D2986CB7DED5D8B43B828FEEDCEFFD6DE7141DC1D15D > 120mackey.txt
 ```
 ![qn4](https://github.com/user-attachments/assets/617a094c-477c-4959-bed4-f44cba79580c)
+
+### Question 5: What is the name of the file that is hidden in the alternative data stream?
+This question is pretty straightforward, just use the **MFT.ADS plugin** ANDDDD we found the answer!
+```bash
+> python vol.py -f memdump.mem windows.mftscan.ADS > 120ads.txt
+```
+![qn5](https://github.com/user-attachments/assets/21f3768e-e9d2-4c26-bc72-dc1e988d792f)
+
+
+
 
 
 
