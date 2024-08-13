@@ -73,6 +73,9 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 > python vol.py -f mem.dump windows.pslist.PsList --pid 880 --dump
 ```
 ```bash
+> python vol.py -f mem.dmp -o "C:/users" windows.dumpfiles.DumpFiles --virtaddr 0xc60db1ffcd10
+```
+```bash
 > python vol.py -f mem.dump windows.ldrmodules.LdrModules --pid 880
 ```
 ```bash
