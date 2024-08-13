@@ -16,6 +16,7 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 - windows.dlllist.DllList 
 - windows.hashdump.Hashdump **(To extract and decrypt cached domain credentials)**
 - windows.lsadump.Lsadump
+- windows.filescan.FileScan **(To view all the files in the image)**
 - windows.registry.printkey.PrintKey **(Print Registry Key value)**
 - windows.mftscan.ADS **(View all ADS)**
 - windows.devicetree.DeviceTree = **(list attached devices and its driver)**
@@ -34,7 +35,6 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 - windows.driverscan.DriverScan
 - windows.dumpfiles.DumpFiles
 - windows.envars.Envars
-- windows.filescan.FileScan
 - windows.getservicesids.GetServiceSIDs
 - windows.iat.IAT
 - windows.joblinks.JobLinks
@@ -88,8 +88,8 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 ### Approach for solving certain questions:
 1) look for volatility profile = **(Info)** plugin and look for NtBuildLab
 2) Odd file referenced to a process = **(Handles)** plugin to look for any related data to that process
-3) base address of injected DLL = **(Malfind)** plugin to look for the base address of the orignal process that was used for DLL injection
-4) Looking for file in ADS = **(mftscan.ADS)** plugin for all MFT entries
-5) Looking for certain keywords or program = string the whole memory file and find it!
+3) base address of injected DLL = **(Malfind)** plugin to look for the base address of the original process that was used for DLL injection
+4) Looking for file in ADS = **(mftscan.ADS)** plugin for all ADS entries
+5) Looking for certain keywords or programs = string the whole memory file and find it!
 6) Looking for MD5 Hash or a certain length of text = using string function (*strings64.exe -n 32 XXXX.svchost.exe.0x7ff65b2d0000.dmp > 32string.txt*)
 
