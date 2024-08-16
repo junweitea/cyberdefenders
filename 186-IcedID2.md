@@ -47,6 +47,9 @@ However in the MFTscan result, i only able to find **docs_invoice_173.iso.lnk** 
 I also went to look for the ADS as it contains Identifier information like the source of the file for their downloaded files however still unable to find the answer.
 
 I continue to research on the possible way of how we can find the answer and with the help of the other cyberdefenders, they introduce this tool **[MemProcFS](https://github.com/ufrisk/MemProcFS)** by ufrisk! **AND TO MY AMAZEMENT, THIS TOOL IS A GAME CHANGER FOR MEMORY FORENSICS!!!!!** Basically with MemProcFS, it will mount your memory dump in a virtual file system with all processes info and it's handle, file in the memory, registry hives, $MFT or web connections! It's like you are browsing the memory with File Explorer!
+```bash
+> MemProcFS.exe -f memory.dmp -forensic 1
+```
 ![image](https://github.com/user-attachments/assets/f4606d92-2de0-4d5f-a615-e3623f09168b)
 ![image](https://github.com/user-attachments/assets/99a046d4-a6d7-4936-b8e8-3182d0950309)
 
