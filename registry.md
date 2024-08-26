@@ -48,10 +48,27 @@ I am going to categorise the artefacts/information in Registry using the categor
 > Load up USRClass.dat/NTUser.dat into ShellBag Explorer
 
 ## System Information
-ComputerName
-Timezone
-IP Address
-Mac Address
-List of Users (SAM Hive)
+*Important/useful information you might need!*
+#### ComputerName
+> SOFTWARE: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ComputerName\
+
+#### Timezone
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\ActiveTimeBias
+>
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\TimeZoneKeyName
+
+#### IP Address
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
+
+#### Network Adapter & Mac Address
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\IfDescr
+>
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\CurrentAddress
+
+#### Connected Network
+> SOFTWARE: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profile
+
+#### List of Users
+> SAM: SAM\Domains\Accounts\Users\Names
 
 
