@@ -71,4 +71,10 @@ I am going to categorise the artefacts/information in Registry using the categor
 #### List of Users
 > SAM: SAM\Domains\Accounts\Users\Names
 
-
+#### User Account's Credential/Password Hashes
+1) Extract both SAM & SYSTEM Hive
+2) Download either [mimikatz](https://github.com/gentilkiwi/mimikatz) or [secretsdump.py](https://github.com/fortra/impacket/blob/master/examples/secretsdump.py)
+3) Run either software to dump the hashes and put into crackstation.net to crack the hashes *(I prefer to use mimikatz)*
+```bash
+> lsadump::sam /sam:"C:\Users\Junweitea\Downloads\mimikatz_trunk\x64\SAM_victim" /system:"C:\Users\Junweitea\Downloads\mimikatz_trunk\x64\SYSTEM_victim"
+```
