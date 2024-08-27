@@ -38,11 +38,17 @@ I am going to categorise the artefacts/information in Registry using the categor
 > 
 > NTUSER.dat: Software\Microsoft\Internet Explorer\TypedURLs
 
+#### Recent Program that was executed from Start/Run
+> NTUSER.dat: Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+
 #### Recent Docs
 > NTUSER.dat: Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
 
 #### WordWheelQuery (Word that searched in File Explorer)
 > NTUSER.dat: Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery
+
+#### User's Install Program/Software
+> NTUSER.dat: Software\
 
 #### Shellbag Forensics (Store metadata about folders and directories that a user has accessed, modified, or interacted with)
 > Load up USRClass.dat/NTUser.dat into ShellBag Explorer
@@ -61,12 +67,23 @@ I am going to categorise the artefacts/information in Registry using the categor
 > SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
 
 #### Network Adapter & Mac Address
-> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\IfDescr
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\IfDescr
 >
-> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\CurrentAddress
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\NetworkSetup2\Interfaces\\{NetworkCard}\Kernel\CurrentAddress
+
+#### Physical Network Card/Adapter
+> SOFTWARE: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkCards
 
 #### Connected Network
-> SOFTWARE: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profile
+> SOFTWARE: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\
+
+#### Connected USB/Devices
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\DeviceClasses
+
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\SCSI
+
+#### Shared Folder/Drive
+> SYSTEM: HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\lanmanserver\Share
 
 #### List of Users
 > SAM: SAM\Domains\Accounts\Users\Names
