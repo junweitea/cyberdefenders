@@ -13,10 +13,11 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 - windows.netstat.NetStat 
 - windows.svcscan.SvcScan **(view all service info)**
 - windows.getsids.GetSIDs **(view which user/sid executed what process)**
+- windows.filescan.FileScan **(To view all the files in the image and their virtaddr)**
+- windows.dumpfiles.DumpFiles **(Dump the file out by providing it's virtaddr)**
 - windows.dlllist.DllList 
 - windows.hashdump.Hashdump **(To extract and decrypt cached domain credentials)**
 - windows.lsadump.Lsadump
-- windows.filescan.FileScan **(To view all the files in the image)**
 - windows.registry.printkey.PrintKey **(Print Registry Key value)**
 - windows.mftscan.ADS **(View all ADS)**
 - windows.devicetree.DeviceTree = **(list attached devices and its driver)**
@@ -67,13 +68,14 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 
 ### Command to be run:
 ```bash
-> python vol.py -f memdump.mem windows.pstree.PsTree > 23pstree.txt
+> python vol.py -f mem.mem windows.pstree.PsTree > 23pstree.txt
 ```
 ```bash
 > python vol.py -f mem.dump windows.pslist.PsList --pid 880 --dump
 ```
 ```bash
-> python vol.py -f mem.dmp -o "C:/users" windows.dumpfiles.DumpFiles --virtaddr 0xc60db1ffcd10
+> python vol.py -f mem.mem windows.filescan.FileScan > 23filescan.txt
+> python vol.py -f mem.dmp -o "C:/users/junweitea" windows.dumpfiles.DumpFiles --virtaddr 0xc60db1ffcd10
 ```
 ```bash
 > python vol.py -f mem.dump windows.ldrmodules.LdrModules --pid 880
@@ -95,4 +97,5 @@ Hello all! This is just my note that i referenced when doing memory forensic usi
 4) Looking for file in ADS = **(mftscan.ADS)** plugin for all ADS entries
 5) Looking for certain keywords or programs = string the whole memory file and find it!
 6) Looking for MD5 Hash or a certain length of text = using string function (*strings64.exe -n 32 XXXX.svchost.exe.0x7ff65b2d0000.dmp > 32string.txt*)
+7) Sometime the file creation datetime is referenced from the **Details** tab in virustotal
 
